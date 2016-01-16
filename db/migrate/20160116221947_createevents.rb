@@ -1,4 +1,4 @@
-class Createevents < ActiveRecord::Migration
+class CreateEvents < ActiveRecord::Migration
   def change
   	create_table :events do |t|
 		t.timestamp :time
