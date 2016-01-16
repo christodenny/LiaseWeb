@@ -5,8 +5,8 @@ class CreateEvents < ActiveRecord::Migration
 		t.integer :length
 		t.string :place
 		t.string :name
-		t.decimal{9, 6} :longitude
-		t.decimal{9, 6} :latitude
+		t.decimal :longitude, :precision => 9, :scale => 6
+		t.decimal :latitude, :precision => 9, :scale => 6
 	end
   end
 end
