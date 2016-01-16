@@ -1,6 +1,3 @@
-config.threadsafe!
-config.dependency_loading = true if $rails_rake_task
-
 class CreateContacts < ActiveRecord::Migration
   def change
   	create_table :contacts do |t|
