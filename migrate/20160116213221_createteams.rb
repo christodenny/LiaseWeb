@@ -1,4 +1,4 @@
-class Createteams < ActiveRecord::Migration
+class CreateTeams < ActiveRecord::Migration
   def change
   end
 end
