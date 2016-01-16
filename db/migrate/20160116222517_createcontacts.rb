@@ -1,4 +1,4 @@
-class CreateContacts < ActiveRecord::Migration
+class Createcontacts < ActiveRecord::Migration
   def change
   	create_table :contacts do |t|
 		t.integer :team_id
