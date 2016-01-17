@@ -89,7 +89,7 @@ post "/newperson" do
 end
 
 get "/personmax" do
-	ret = Person.maximum(:id)
+	ret = Person.last.id
 end
 
 get "/people" do
