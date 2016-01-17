@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SOAA | Schedule</title>
+    <title>SOAA | Add Events</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <header class="main-header">
 
             <!-- Logo -->
-            <div id="logo-div" class="logo">
+            <div id="logo-div" class="logo" href="schedule.html">
 <!--                <img src="logo.png" id="logo-img" style="margin-left: -15px; ">-->
                 <a href="schedule.html">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -95,13 +95,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <ul class="sidebar-menu">
                     <li class="header">Menu</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="schedule.html"><i class="fa fa-calendar"></i> <span>Schedule</span></a>
+                    <li><a href="schedule"><i class="fa fa-calendar"></i> <span>Schedule</span></a>
                     </li>
-                    <li><a href="teams.html"><i class="fa fa-group"></i> <span>Teams</span></a>
+                    <li><a href="teams"><i class="fa fa-group"></i> <span>Teams</span></a>
                     </li>
-                    <li><a href="message.html"><i class="fa fa-envelope-o"></i> <span>Quick Message</span></a>
+                    <li><a href="message"><i class="fa fa-envelope-o"></i> <span>Quick Message</span></a>
                     </li>
-                    <li><a href="events.html"><i class="fa fa-plus-square"></i> <span>Add Events</span></a>
+                    <li class="active"><a href="events"><i class="fa fa-plus-square"></i> <span>Add Events</span></a>
                     </li>
                 </ul>
                 <!-- /.sidebar-menu -->
@@ -109,114 +109,93 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="min-height: 559px;">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-            Schedule of Events
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Add New Events
             <small>Optional description</small>
           </h1>
-                
-            </section>
-
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="container panel-group col-md-9">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h4 class="panel-title">Start-End Time</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1">Event Name</a>
-                                </h4>
-                                </div>
-                            </div>
+          
+        </section>
+          
+                    
+        <!-- Main content -->
+        <section class = "content">
+            <div class="container">
+                <form role = "form">
+                    <div class = "row">
+                    <div class="col-md-3">
+                      <label for="name">New Event Name:</label>  
+                      <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="start">Start Time:</label>  
+                      <input type="text" class="form-control" id="start">
+                    </div>
+                    <div class="col-md-3">
+                      <label for="end">End Time:</label>  
+                      <input type="text" class="form-control" id="end">
+                    </div>
                         </div>
-                        <div id="collapse1" class="panel-collapse collapse">
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body"><b>Location</b>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body">School 1</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body">School 2</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body">School 3</div>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <h4 class="panel-title">Start-End Time</h4>
-                                </div>
-                                <div class="col-md-6">
-                                    <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse2">Event Name</a>
-                                </h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="collapse2" class="panel-collapse collapse">
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body"><b>Location</b>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body">School 1</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body">School 2</div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-offset-3">
-                                    <div class="panel-body">School 3</div>
-                                </div>
-                            </div>
-                        </div>
+                    <br>
+                    <div class = "row">
+                        <div class="col-md-3">
+                      <label for="place">Location:</label>  
+                      <input type="text" class="form-control" id="place">
+                    </div>
+                        <div class="col-md-3">
+                      <label for="lat">Latitude:</label>  
+                      <input type="number" class="form-control" id="lat">
+                    </div>
+                        <div class="col-md-3">
+                      <label for="long">Longitude:</label>  
+                      <input type="number" class="form-control" id="long">
+                    </div>
+                        
+                    </div>
+                    <br>
+                    <div class = "row">
+                        <div class="col-md-9">
+                      <label for="summary">Description:</label>  
+                      <input type="text" class="form-control" id="summary">
                     </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-
+                    
+                    <br>
+                    <div class = "row">
+                        <div class = "col-md-1">
+                    <button type = "submit" class= "btn btn-default">Enter</button></div>
+                        </div>
+                </form>
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright © 2015 <a href="http://atxscioly.com/">Science Olympiad Alumni Association</a>.</strong> All rights reserved.
-        </footer>
+            <br>
+            <div class = "container">
+                <div class="panel panel-default col-md-4">
+                    <div class="panel-body">Event Name 1</div>
+                
+                    <div class="panel-body">Event Name 2</div>
+                                
+                    <div class="panel-body">Event Name 3</div>
+                                
+                </div>
+            </div>
+        </section>
+      </div><!-- /.content-wrapper -->
 
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="http://atxscioly.com/">Science Olympiad Alumni Association</a>.</strong> All rights reserved.
+      </footer>
 
-    </div>
-    <!-- ./wrapper -->
+      
+    </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
 
