@@ -60,6 +60,7 @@ end
 
 post "/newteam" do
 	Team.create(name: params[:name])
+	"new team saved"
 end
 
 post "/addperson" do
