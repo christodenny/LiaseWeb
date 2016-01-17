@@ -40,14 +40,15 @@ end
 
 post "/newevent" do
 	e = Event.new
-	e.time = params[:time]
-	e.length = params[:length]
+	e.start_time = params[:start_time]
+	e.end_time = params[:end_time]
 	e.place = params[:place]
 	e.name = params[:name]
 	e.latitude = params[:latitude]
 	e.longitude = params[:longitude]
+	e.description = params[:description]
 	e.save
-	"saved"
+	"new event saved"
 end
 
 get "/events" do
@@ -55,7 +56,8 @@ get "/events" do
 end
 
 post "/newpplevent" do
-	tuple = People_Event.new
+	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
+	"new ppl event saved"
 end
 
 get "/pplevents" do
@@ -78,5 +80,19 @@ end
 
 get "/people" do
 	people = Person.all.to_json
+end
+
+post "/newcontact" do
+	c = Contact.new
+	c.team_id = params[:team_id]
+	c.ppl_id = params[:ppl_id]
+	c.phone_number = params[:phone_number]
+	c.ppl_type = params[:ppl_type]
+	c.save
+	"new contact saved"
+end
+
+get "/contacts" do
+	contacts = Contact.all.to_json
 end
 
