@@ -174,9 +174,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class = "container">
                 <div class="panel panel-default col-md-4">
                     <% @events.each do |event| %>
-                      <div class="panel-body"><% event.name %></div>
+                      <div class="panel-body"><%= event.name %></div>
                     <% end %>
-                                
                 </div>
             </div>
         </section>
