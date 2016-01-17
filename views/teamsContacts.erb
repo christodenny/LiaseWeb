@@ -125,10 +125,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class = "content">
             <div class="panel-group container col-md-9">
                 <% (0..@names.length-1).each do |i| %>
-                  @names.length
-                  @names[0]
-                  @names[1]
-                  @names[2]
+                  <% @names.length %>
+                  <% @names[0] %>
+                  <% @names[1] %>
+                  <% @names[2] %>
                   <div class="panel panel-default">
                       <div class="panel-heading">
                           <div class="row">
