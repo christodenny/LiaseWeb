@@ -45,18 +45,18 @@ post "/newevent" do
 end
 
 get "/events" do
-	events = Event.all.to_json
+	Event.all.to_json
 end
 
 get "/eventbyid" do
-	event = Event.find_by(id: params[:id])
+	Event.find_by(id: params[:id])
 end
 
 get "/eventsbypersonid" do
 	array = []
 	pplevents = People_Event.where(ppl_id: params[:id])
 	pplevents.each { |pplevent| array += Event.where(id: pplevent.event_id)}
-	ret = array.to_json
+	array.to_json
 end
 
 post "/newpplevent" do
@@ -65,23 +65,23 @@ post "/newpplevent" do
 end
 
 get "/pplevents" do
-	pplevents = People_Event.all.to_json
+	People_Event.all.to_json
 end
 
 get "ppleventbyid" do
-	pplevent = People_Event.find_by(id: params[:id])
+	People_Event.find_by(id: params[:id])
 end
 
 post "/newteam" do
-	ret = Team.create(name: params[:name])[:id].to_s
+	Team.create(name: params[:name])[:id].to_s
 end
 
 get "/teams" do
-	teams = Team.all.to_json
+	Team.all.to_json
 end
 
 get "/teambyid" do
-	team = Team.find_by(id: params[:id])
+	Team.find_by(id: params[:id])
 end
 
 post "/newperson" do
@@ -90,15 +90,15 @@ post "/newperson" do
 end
 
 get "/people" do
-	people = Person.all.to_json
+	Person.all.to_json
 end
 
 get "/personbyid" do
-	person = Person.find_by(id: params[:id])
+	Person.find_by(id: params[:id])
 end
 
 get "/peoplebyteamid" do
-	people = Person.where(team_id: params[:id]).to_json
+	Person.where(team_id: params[:id]).to_json
 end
 
 post "/newcontact" do
@@ -108,18 +108,22 @@ post "/newcontact" do
 	c.phone_number = params[:phone_number]
 	c.ppl_type = params[:ppl_type]
 	c.save
-	ret = c[:id].to_s
+	c[:id].to_s
 end
 
 get "/contacts" do
-	contacts = Contact.all.to_json
+	Contact.all.to_json
 end
 
 get "/contactbyid" do
-	contact = Contact.find_by(id: params[:id])
+	Contact.find_by(id: params[:id])
 end
 
 get "/contactsbyteamid" do
-	contacts = Contact.where(team_id: params[:id]).to_json
+	Contact.where(team_id: params[:id]).to_json
+end
+
+get "/schedule" do
+	@events = Event.order(:start_time)
 end
 
