@@ -85,7 +85,7 @@ get "/teambyid" do
 end
 
 post "/newperson" do
-	Person.create(name: params[:name], team_id: params[:team])
+	Person.create(name: params[:name], team_id: params[:team_id])
 	Person.last[:id].to_s
 end
 
@@ -124,7 +124,8 @@ get "/contactsbyteamid" do
 end
 
 get "/schedule" do
-	Event.all.order(:start_time)
+	@events = Event.all.order(:start_time)
+	erb :schedule
 end
 
 
