@@ -158,8 +158,14 @@ get "/addevent" do
 end
 
 post "/addevent" do
-	@event = Event.new(params[:event])
-	puts params
-	@event.save
+	new_event = Event.new
+	new_event.name = params[:name]
+	new_event.start_time = params[:start_time]
+	new_event.end_time = params[:end_time]
+	new_event.place = params[:place]
+	new_event.latitude = params[:latitude]
+	new_event.longitude = params[:longitude]
+	new_event.description = params[:description]
+	new_event.save
 end
 
