@@ -159,6 +159,7 @@ end
 
 post "/addevent" do
 	@event = Event.new(params[:event])
+	puts params
 	@event.save
 end
 
