@@ -76,7 +76,7 @@ post "/newteam" do
 end
 
 get "/teams" do
-	teams = Team.all[0].id
+	teams = Team.all.to_json
 end
 
 get "/teambyid" do
@@ -85,7 +85,8 @@ end
 
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
-	ret = ActiveRecord::Base.connection.execute("select last(id) from people")
+	puts Person.last.id
+	ret = Person.last.id
 end
 
 get "/people" do
