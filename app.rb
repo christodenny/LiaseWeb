@@ -125,7 +125,7 @@ end
 
 get "/schedule" do
 	events = Event.all
-	events.order(:start_time)
+	#events.order(:start_time)
 end
 
 
