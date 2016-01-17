@@ -37,7 +37,7 @@ get "/" do
 	"hello world"
 end
 
-get "/newevent" do
+post "/newevent" do
 	e = Event.new
 	e.time = params[:time]
 	e.length = params[:length]
