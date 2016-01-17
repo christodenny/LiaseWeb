@@ -41,7 +41,7 @@ post "/newevent" do
 	e.longitude = params[:longitude]
 	e.description = params[:description]
 	e.save
-	ret = e[:id]
+	ret = e[:id].to_s
 end
 
 get "/events" do
@@ -60,7 +60,8 @@ get "/eventsbypersonid" do
 end
 
 post "/newpplevent" do
-	ret = People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])[:id]
+	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
+	People_Event.last[:id].to_s
 end
 
 get "/pplevents" do
@@ -72,7 +73,7 @@ get "ppleventbyid" do
 end
 
 post "/newteam" do
-	ret = Team.create(name: params[:name])[:id]
+	ret = Team.create(name: params[:name])[:id].to_s
 end
 
 get "/teams" do
@@ -85,7 +86,7 @@ end
 
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
-	"" + Person.last[:id]
+	Person.last[:id].to_s
 end
 
 get "/people" do
@@ -107,7 +108,7 @@ post "/newcontact" do
 	c.phone_number = params[:phone_number]
 	c.ppl_type = params[:ppl_type]
 	c.save
-	ret = c[:id]
+	ret = c[:id].to_s
 end
 
 get "/contacts" do
