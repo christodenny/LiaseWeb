@@ -136,7 +136,7 @@ get "/teamscontacts" do
 		temp.push(coach.phone_number)
 		temp.push(Person.find_by(id: coach.ppl_id).name)
 		temp.push(Team.find_by(id: coach.team_id).name)
-		temp.push(coach.id)
+		temp.push(coaches.team_id + ":" + coaches.ppl_id)
 		@teamcontacts.push(temp)
 	end
 	erb :teamsContacts
@@ -146,16 +146,8 @@ get "/message" do
 	erb :message
 end
 
-<<<<<<< HEAD
 get "/addevent" do
 	@event = Event.new(params[:event])
 	@event.save
 end
-=======
-get "/addEvents" do
-	@events = Event.all.order(:start_time)
-	erb :events
-end
-
->>>>>>> 53134bf11277b357bfa3415d0b728cc6781a23ca
 
