@@ -125,17 +125,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <section class = "content">
             <div class="panel-group container col-md-9">
                 <% (0..@names.length-1).each do |i| %>
+                  @names.length
+                  @names[0]
+                  @names[1]
+                  @names[2]
                   <div class="panel panel-default">
                       <div class="panel-heading">
                           <div class="row">
                               <div class="col-md-3">
                                   <h4 class="panel-title">
-                                      <a data-toggle="collapse" href="#<%@teams[i]%>"><% @teams[i] %></a>
+                                      <a data-toggle="collapse" href="#<% @teams[i] %>"><% @teams[i] %></a>
                                   </h4>
                               </div>
                           </div>  
                       </div>
-                      <div id="<%@teams[i]%>" class="panel-collapse collapse">
+                      <div id="<% @teams[i] %>" class="panel-collapse collapse">
                           <div class="row">
                               <div class="col-md-4 col-md-offset-2">
                                   <div class="panel-body"><b>Name</b></div>
