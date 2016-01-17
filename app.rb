@@ -86,7 +86,7 @@ end
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
 	puts "helkdsjflkdsjflkdsfjdlk"
-	puts "last id: " + Person.last.id
+	puts "last id: #{Person.last.id}"
 	#ret = Person.last.id
 end
 
