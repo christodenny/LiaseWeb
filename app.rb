@@ -41,7 +41,7 @@ post "/newevent" do
 	e.longitude = params[:longitude]
 	e.description = params[:description]
 	e.save
-	"new event saved"
+	ret = e.id
 end
 
 get "/events" do
@@ -60,8 +60,7 @@ get "/eventsbypersonid" do
 end
 
 post "/newpplevent" do
-	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
-	"new ppl event saved"
+	ret = People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id]).id
 end
 
 get "/pplevents" do
@@ -73,8 +72,7 @@ get "ppleventbyid" do
 end
 
 post "/newteam" do
-	Team.create(name: params[:name])
-	"new team saved"
+	ret = Team.create(name: params[:name]).id
 end
 
 get "/teams" do
@@ -87,7 +85,7 @@ end
 
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
-	"new person saved"
+	ret = ActiveRecord::Base.connection.execute("select last(id) from people")
 end
 
 get "/people" do
@@ -109,7 +107,7 @@ post "/newcontact" do
 	c.phone_number = params[:phone_number]
 	c.ppl_type = params[:ppl_type]
 	c.save
-	"new contact saved"
+	ret = c.id
 end
 
 get "/contacts" do
