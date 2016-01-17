@@ -61,7 +61,7 @@ end
 
 post "/newpplevent" do
 	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
-	ret = People_Event.last[:id].to_s
+	People_Event.last[:id]
 end
 
 get "/pplevents" do
