@@ -128,7 +128,7 @@ get "/schedule" do
 	erb :schedule
 end
 
-get "teamscontacts" do
+get "/teamscontacts" do
 	coaches = Contact.where(ppl_type: 1)
 	@names = []
 	@phones = []
