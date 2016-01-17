@@ -146,7 +146,7 @@ get "/message" do
 	erb :message
 end
 
-get "/addevent" do
+get "/addevent2" do
 	@event = Event.new(params[:event])
 	@event.save
 end
