@@ -54,3 +54,16 @@ get "/events" do
 	events = Event.all.to_json
 end
 
+post "/addevent" do
+	tuple = People_Event.new
+	tuple.
+end
+
+post "/newteam" do
+	Team.create(name: params[:name])
+end
+
+post "/addperson" do
+	Person.create(name: params[:name], fk_people_teams: [:team])
+end
+
