@@ -56,7 +56,6 @@ end
 
 post "/addevent" do
 	tuple = People_Event.new
-	tuple.
 end
 
 post "/newteam" do
@@ -65,5 +64,6 @@ end
 
 post "/addperson" do
 	Person.create(name: params[:name], fk_people_teams: [:team])
+	"new person saved"
 end
 
