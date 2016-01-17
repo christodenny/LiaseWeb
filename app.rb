@@ -60,7 +60,8 @@ get "/eventsbypersonid" do
 end
 
 post "/newpplevent" do
-	ret = People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])[:id].to_s
+	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
+	ret = People_Event.last[:id].to_s
 end
 
 get "/pplevents" do
