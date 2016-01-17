@@ -133,11 +133,17 @@ get "/teamscontacts" do
 	@names = []
 	@phones = []
 	@teams = []
-	coaches.each {|coach| 
+	coaches.each do |coach| 
 		@phones.push(coach.phone_number) 
 		@names.push(Person.find_by(id: coach.ppl_id).name) 
 		@teams.push(Team.find_by(id: coach.team_id).name)
-	}
+	end
 	erb :teamsContacts
 end
+
+get "/message" do
+	erb :message
+end
+
+
 
