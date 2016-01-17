@@ -176,6 +176,16 @@ a:focus {
   text-decoration: none;
   color: #72afd2;
 }
+.header {
+        color: #36A0FF;
+        font-size: 27px;
+        padding: 10px;
+}
+
+.bigicon {
+        font-size: 35px;
+        color: #36A0FF;
+}
 /* Page Header */
 .page-header {
   margin: 10px 0 20px 0;
@@ -296,16 +306,17 @@ a:focus {
   text-align: center;
   width: 230px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  padding: 0 15px;
+  padding: 0 0px;
   font-weight: 300;
   overflow: hidden;
 }
-.main-header .logo .logo-lg {
-  display: block;
+
+#logo-div{
+    background-image: url("../../logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
-.main-header .logo .logo-mini {
-  display: none;
-}
+
 .main-header .navbar-brand {
   color: #fff;
 }
@@ -639,6 +650,8 @@ a:focus {
     -webkit-transform: translateZ(0);
   }
   .sidebar-mini.sidebar-collapse .main-header .logo {
+/*    background-image: url("../../favicon.png");*/
+    background-repeat: no-repeat;
     width: 50px;
   }
   .sidebar-mini.sidebar-collapse .main-header .logo > .logo-mini {
