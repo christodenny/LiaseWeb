@@ -146,5 +146,8 @@ get "/message" do
 	erb :message
 end
 
+get "/addEvents" do
+	erb :events
+end
 
 
