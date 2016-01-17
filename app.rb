@@ -85,7 +85,7 @@ end
 
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
-	ret = ActiveRecord::Base.connection.execute("select last(id) from people;")
+	ret = ActiveRecord::Base.connection.execute("select last(id) from people")
 end
 
 get "/people" do
