@@ -136,7 +136,7 @@ get "/teamscontacts" do
 		temp.push(coach.phone_number)
 		temp.push(Person.find_by(id: coach.ppl_id).name)
 		temp.push(Team.find_by(id: coach.team_id).name)
-		temp.push(coach.team_id + ":" + coach.ppl_id)
+		temp.push(coach.team_id.to_s + ":" + coach.ppl_id.to_s)
 		@teamcontacts.push(temp)
 	end
 	erb :teamsContacts
