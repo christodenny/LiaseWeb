@@ -76,7 +76,7 @@ post "/newteam" do
 end
 
 get "/teams" do
-	teams = Team.all.to_json
+	teams = Team.all[0].id
 end
 
 get "/teambyid" do
