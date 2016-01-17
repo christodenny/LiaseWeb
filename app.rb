@@ -153,6 +153,11 @@ get "/message" do
 end
 
 get "/addevent" do
+	@events = Event.all.order(:start_time)
+	erb :events
+end
+
+post "/addevent" do
 	@event = Event.new(params[:event])
 	@event.save
 end

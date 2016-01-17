@@ -124,19 +124,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <section class = "content">
             <div class="container">
-                <form role = "form">
+                <form role = "form" method="post">
                     <div class = "row">
                     <div class="col-md-3">
                       <label for="name">New Event Name:</label>  
                       <input type="text" class="form-control" id="name">
                     </div>
                     <div class="col-md-3">
-                      <label for="start">Start Time:</label>  
-                      <input type="text" class="form-control" id="start">
+                      <label for="start_time">Start Time:</label>  
+                      <input type="text" class="form-control" id="start_time">
                     </div>
                     <div class="col-md-3">
-                      <label for="end">End Time:</label>  
-                      <input type="text" class="form-control" id="end">
+                      <label for="end_time">End Time:</label>  
+                      <input type="text" class="form-control" id="end_time">
                     </div>
                         </div>
                     <br>
@@ -146,28 +146,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <input type="text" class="form-control" id="place">
                     </div>
                         <div class="col-md-3">
-                      <label for="lat">Latitude:</label>  
-                      <input type="number" class="form-control" id="lat">
+                      <label for="latitude">Latitude:</label>  
+                      <input type="number" class="form-control" id="latitude">
                     </div>
                         <div class="col-md-3">
-                      <label for="long">Longitude:</label>  
-                      <input type="number" class="form-control" id="long">
+                      <label for="longitude">Longitude:</label>  
+                      <input type="number" class="form-control" id="longitude">
                     </div>
                         
                     </div>
                     <br>
                     <div class = "row">
                         <div class="col-md-9">
-                      <label for="summary">Description:</label>  
-                      <input type="text" class="form-control" id="summary">
+                      <label for="description">Description:</label>  
+                      <input type="text" class="form-control" id="description">
                     </div>
                     </div>
                     
                     <br>
                     <div class = "row">
                         <div class = "col-md-1">
-                    <button type = "submit" class= "btn btn-default">Enter</button></div>
+                          <button type="submit" class="btn btn-default">Enter</button>
                         </div>
+                    </div>
                 </form>
             </div>
             <br>
