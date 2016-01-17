@@ -101,6 +101,12 @@ get "/peoplebyteamid" do
 	Person.where(team_id: params[:id]).to_json
 end
 
+post "/settoken" do
+	person = Person.find_by(id: params[:id])
+	person.token = params[:token]
+	person.save
+end
+
 post "/newcontact" do
 	c = Contact.new
 	c.team_id = params[:team_id]
@@ -146,7 +152,7 @@ get "/message" do
 	erb :message
 end
 
-get "/addevent2" do
+get "/addevent" do
 	@event = Event.new(params[:event])
 	@event.save
 end
