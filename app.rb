@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'json'
 
 db = URI.parse('postgres://oaafdlhwmkznte:mP2aHxLDrp7Xz_5Hy7KQo_hpBC@ec2-54-225-165-132.compute-1.amazonaws.com:5432/d58tgju84l2ipv')
 
@@ -47,5 +48,9 @@ post "/newevent" do
 	e.longitude = params[:longitude]
 	e.save
 	"saved"
+end
+
+get "/events" do
+	events = Event.all.to_json
 end
 
