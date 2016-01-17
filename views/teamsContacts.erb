@@ -130,12 +130,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                           <div class="row">
                               <div class="col-md-3">
                                   <h4 class="panel-title">
-                                      <a data-toggle="collapse" href="#<% @teamContact[2] %>"><% @teamContact[2] %></a>
+                                      <a data-toggle="collapse" href="#<%= @teamContact[2] %>"><%= @teamContact[2] %></a>
                                   </h4>
                               </div>
                           </div>  
                       </div>
-                      <div id="<% @teamContact[2] %>" class="panel-collapse collapse">
+                      <div id="<%= @teamContact[2] %>" class="panel-collapse collapse">
                           <div class="row">
                               <div class="col-md-4 col-md-offset-2">
                                   <div class="panel-body"><b>Name</b></div>
@@ -149,10 +149,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   <div class="panel-body">Coach</div>
                               </div>
                               <div class="col-md-4">
-                                  <div class="panel-body"><% @teamContact[1] %></div>
+                                  <div class="panel-body"><%= @teamContact[1] %></div>
                               </div>
                               <div class="col-md-3">
-                                  <div class="panel-body"><% @teamContact[0] %></div>
+                                  <div class="panel-body"><%= @teamContact[0] %></div>
                               </div>
                           </div>
                       </div>
