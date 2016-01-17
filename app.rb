@@ -128,5 +128,16 @@ get "/schedule" do
 	erb :schedule
 end
 
-
+get "teamscontacts" do
+	coaches = Contact.where(ppl_type: 1)
+	@names = []
+	@phones = []
+	@teams = []
+	coaches.each {|coach| 
+		@phones.push(coach.phone_number) 
+		@names.push(Person.find_by(id: coach.ppl_id)) 
+		@teams.push(Team.find_by(id: coach.team_id))
+	}
+	erb :teamsContacts
+end
 
