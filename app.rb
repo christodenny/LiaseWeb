@@ -39,12 +39,12 @@ end
 
 get "/newevent" do
 	e = Event.new
-	e.time = params['time']
-	e.length = params['length']
-	e.place = params['place']
-	e.name = params['name']
-	e.latitude = params['latitude']
-	e.longitude = params['longitude']
+	e.time = params[:time]
+	e.length = params[:length]
+	e.place = params[:place]
+	e.name = params[:name]
+	e.latitude = params[:latitude]
+	e.longitude = params[:longitude]
 	e.save
 	"saved"
 end
