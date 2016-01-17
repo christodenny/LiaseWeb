@@ -130,13 +130,13 @@ end
 
 get "/teamscontacts" do
 	coaches = Contact.where(ppl_type: true)
-	@names = []
-	@phones = []
-	@teams = []
+	@teamcontacts = []
 	coaches.each do |coach| 
-		@phones.push(coach.phone_number) 
-		@names.push(Person.find_by(id: coach.ppl_id).name) 
-		@teams.push(Team.find_by(id: coach.team_id).name)
+	    temp = []
+		temp.push(coach.phone_number)
+		temp.push(Person.find_by(id: coach.ppl_id).name)
+		temp.push(Team.find_by(id: coach.team_id).name)
+		@teamcontacts.push(temp)
 	end
 	erb :teamsContacts
 end
@@ -144,7 +144,6 @@ end
 get "/message" do
 	erb :message
 end
-
 
 
 
