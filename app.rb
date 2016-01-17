@@ -85,6 +85,10 @@ end
 
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
+	#ret = Person.maximum(:id)
+end
+
+get "/personmax" do
 	ret = Person.maximum(:id)
 end
 
