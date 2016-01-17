@@ -125,8 +125,7 @@ end
 
 get "/schedule" do
 	@events = Event.all.order(:start_time)
-	@blah = "hello"
-	erb :sample
+	erb :schedule
 end
 
 
