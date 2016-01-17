@@ -46,6 +46,6 @@ post "/newevent" do
 	e.latitude = #{params[:latitude]}
 	e.longitude = #{params[:longitude]}
 	e.save
-	#{params[:length]}
+	{params[:length]}
 end
 
