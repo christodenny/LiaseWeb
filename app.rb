@@ -86,8 +86,8 @@ end
 post "/newperson" do
 	Person.create(name: params[:name], team_id: params[:team])
 	puts "helkdsjflkdsjflkdsfjdlk"
-	puts Person.last.id
-	ret = Person.last.id
+	#puts Person.last.id
+	#ret = Person.last.id
 end
 
 get "/people" do
