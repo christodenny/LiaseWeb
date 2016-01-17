@@ -72,7 +72,7 @@ get "/teams" do
 end
 
 post "/newperson" do
-	Person.create(name: params[:name], team_id: [:team])
+	Person.create(name: params[:name], team_id: params[:team])
 	"new person saved"
 end
 
