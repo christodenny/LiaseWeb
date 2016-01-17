@@ -38,7 +38,6 @@ get "/" do
 end
 
 post "/newevent" do
-=begin
 	e = Event.new
 	e.time = #{params[:time]}
 	e.length = #{params[:length]}
@@ -47,7 +46,6 @@ post "/newevent" do
 	e.latitude = #{params[:latitude]}
 	e.longitude = #{params[:longitude]}
 	e.save
-=end
 	"you got here"
 end
 
