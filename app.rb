@@ -124,7 +124,7 @@ get "/contactsbyteamid" do
 end
 
 get "/schedule" do
-	@events = Event.all.order(:start_time)
+	Event.all.order(:start_time)
 end
 
 
