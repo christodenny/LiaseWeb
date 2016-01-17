@@ -147,6 +147,7 @@ get "/message" do
 end
 
 get "/addEvents" do
+	@events = Event.all.order(:start_time)
 	erb :events
 end
 
