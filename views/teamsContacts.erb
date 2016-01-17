@@ -124,13 +124,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Main content -->
         <section class = "content">
             <div class="panel-group container col-md-9">
-                <% @teams.each do |team| %>
+                <% (0..@names.length-1).each do |i| %>
                   <div class="panel panel-default">
                       <div class="panel-heading">
                           <div class="row">
                               <div class="col-md-3">
                                   <h4 class="panel-title">
-                                      <a data-toggle="collapse" href="#<%=team.id%>"><% team.name %></a>
+                                      <a data-toggle="collapse" href="#<%=team.id%>"><%= @teams[i] %></a>
                                   </h4>
                               </div>
                           </div>  
@@ -149,10 +149,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                   <div class="panel-body">Coach</div>
                               </div>
                               <div class="col-md-4">
-                                  <div class="panel-body"><% team.coach_name %></div>
+                                  <div class="panel-body"><%= @names[i] %></div>
                               </div>
                               <div class="col-md-3">
-                                  <div class="panel-body"><% team.number %></div>
+                                  <div class="panel-body"><%= @phones[i] %></div>
                               </div>
                           </div>
                       </div>
