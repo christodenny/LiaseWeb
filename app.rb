@@ -54,8 +54,12 @@ get "/events" do
 	events = Event.all.to_json
 end
 
-post "/addevent" do
+post "/newpplevent" do
 	tuple = People_Event.new
+end
+
+get "/pplevents" do
+	pplevents = People_Event.all.to_json
 end
 
 post "/newteam" do
@@ -63,8 +67,16 @@ post "/newteam" do
 	"new team saved"
 end
 
-post "/addperson" do
+get "/teams" do
+	teams = Team.all.to_json
+end
+
+post "/newperson" do
 	Person.create(name: params[:name], fk_people_teams: [:team])
 	"new person saved"
+end
+
+get "/people" do
+	people = Person.all.to_json
 end
 
