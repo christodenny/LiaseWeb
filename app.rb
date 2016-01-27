@@ -167,5 +167,6 @@ post "/addevent" do
 	new_event.longitude = params[:longitude]
 	new_event.description = params[:description]
 	new_event.save
+	"event saved"
 end
 
