@@ -32,7 +32,17 @@ get "/" do
 	"hello world"
 end
 
-post "/newevent" do
+get "/events" do
+	Event.all.to_json
+end
+
+get "/events/:id" do
+	e = Event.find(params[:id])
+	return status 404 if e.nil?
+	e.to_json
+end
+
+post "/events" do
 	e = Event.new
 	e.start_time = params[:start_time]
 	e.end_time = params[:end_time]
@@ -42,92 +52,168 @@ post "/newevent" do
 	e.longitude = params[:longitude]
 	e.description = params[:description]
 	e.save
-	ret = e[:id].to_s
+	status 201
+	e.to_json
 end
 
-get "/events" do
-	Event.all.to_json
+put "/events/:id" do
+	e = Event.find(params[:id])
+	return status 404 if e.nil?
+	e.start_time = params[:start_time]
+	e.end_time = params[:end_time]
+	e.place = params[:place]
+	e.name = params[:name]
+	e.latitude = params[:latitude]
+	e.longitude = params[:longitude]
+	e.description = params[:description]
+	e.save
+	status 202
 end
 
-get "/eventbyid" do
-	Event.find_by(id: params[:id])
+delete "/events/:id" do
+	e = Event.find(params[:id])
+	return status 404 if e.nil?
+	e.destroy
+	status 202
 end
 
-get "/eventsbypersonid" do
-	array = []
-	pplevents = People_Event.where(ppl_id: params[:id])
-	pplevents.each { |pplevent| array += Event.where(id: pplevent.event_id)}
-	array.to_json
-end
-
-post "/newpplevent" do
-	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
-	People_Event.last[:id].to_s
-end
-
-get "/pplevents" do
+get "/peopleevents" do
 	People_Event.all.to_json
 end
 
-get "ppleventbyid" do
-	People_Event.find_by(id: params[:id])
+get "/peopleevents/:id" do
+	pple = People_Event.find(params[:id])
+	return status 404 if pple.nil?
+	pple.to_json
 end
 
-post "/newteam" do
-	Team.create(name: params[:name])[:id].to_s
+post "/peopleevents" do
+	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
+	status 201
+	People_Event.last[:id].to_json
+end
+
+delete "/peopleevents/:id" do
+	pple = People_Event.find(params[:id])
+	return status 404 if pple.nil?
+	pple.destroy
+	status 202
 end
 
 get "/teams" do
 	Team.all.to_json
 end
 
-get "/teambyid" do
-	Team.find_by(id: params[:id])
+get "/teams/:id" do
+	team = Team.find(params[:id])
+	return status 404 if team.nil?
+	team.to_json
 end
 
-post "/newperson" do
-	Person.create(name: params[:name], team_id: params[:team_id])
-	Person.last[:id].to_s
+post "/teams" do
+	Team.create(name: params[:name])
+	status 201
+end
+
+get "/teams/:id/people" do
+	Person.where(team_id: params[:id]).to_json
+end
+
+get "/teams/:id/contacts" do
+	Contact.where(team_id: params[:id]).to_json
+end
+
+put "/teams/:id" do
+	team = Team.find(params[:id])
+	return status 404 if team.nil?
+	team.name = params[:name]
+	team.save
+	status 202
+end
+
+delete "/teams/:id" do
+	team = Team.find(params[:id])
+	return status 404 if team.nil?
+	team.destroy
+	status 202
 end
 
 get "/people" do
 	Person.all.to_json
 end
 
-get "/personbyid" do
-	Person.find_by(id: params[:id])
+get "/people/:id" do
+	person = Person.find(params[:id])
+	return status 404 if person.nil?
+	person.to_json
 end
 
-get "/peoplebyteamid" do
-	Person.where(team_id: params[:id]).to_json
+post "/people" do
+	Person.create(name: params[:name], team_id: params[:team_id])
+	Person.last[:id].to_s
 end
 
-post "/settoken" do
-	person = Person.find_by(id: params[:id])
+get "/people/:id/events" do
+	array = []
+	pplevents = People_Event.where(ppl_id: params[:id])
+	pplevents.each { |pplevent| array += Event.where(id: pplevent.event_id)}
+	array.to_json
+end
+
+put "/people/:id" do
+	person = Person.find(params[:id])
+	return status 404 if person.nil?
+	person.name = params[:name]
+	person.team_id = params[:team_id]
 	person.token = params[:token]
 	person.save
+	status 202
 end
 
-post "/newcontact" do
-	c = Contact.new
-	c.team_id = params[:team_id]
-	c.ppl_id = params[:ppl_id]
-	c.phone_number = params[:phone_number]
-	c.ppl_type = params[:ppl_type]
-	c.save
-	c[:id].to_s
+delete "/people/:id" do
+	person = Person.find(params[:id])
+	return status 404 if person.nil?
+	person.destroy
+	status 202
 end
 
 get "/contacts" do
 	Contact.all.to_json
 end
 
-get "/contactbyid" do
-	Contact.find_by(id: params[:id])
+get "/contacts/:id" do
+	contact = Contact.find(params[:id])
+	return status 404 if contact.nil?
+	contact.to_json
 end
 
-get "/contactsbyteamid" do
-	Contact.where(team_id: params[:id]).to_json
+post "/contacts" do
+	c = Contact.new
+	c.team_id = params[:team_id]
+	c.ppl_id = params[:ppl_id]
+	c.phone_number = params[:phone_number]
+	c.ppl_type = params[:ppl_type]
+	c.save
+	status 201
+	c[:id].to_s
+end
+
+put "/contacts/:id" do
+	contact = Contact.find(params[:id])
+	return status 404 if contact.nil?
+	c.team_id = params[:team_id]
+	c.ppl_id = params[:ppl_id]
+	c.phone_number = params[:phone_number]
+	c.ppl_type = params[:ppl_type]
+	c.save
+	status 202
+end
+
+delete "/contacts/:id" do
+	contact = Contact.find(params[:id])
+	return status 404 if contact.nil?
+	contact.destroy
+	status 202
 end
 
 get "/schedule" do
