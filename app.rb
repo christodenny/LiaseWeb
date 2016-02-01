@@ -30,7 +30,7 @@ end
 get "/" do
 	"hello world"
 end
-
+=begin
 post "/newevent" do
 	e = Event.new
 	e.start_time = params[:start_time]
@@ -169,4 +169,4 @@ post "/addevent" do
 	new_event.save
 	"event saved"
 end
-
+=end
