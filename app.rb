@@ -1,6 +1,6 @@
 require 'sinatra'
-require 'sinatra/activerecord'
-require 'json'
+#require 'sinatra/activerecord'
+#require 'json'
 
 =begin
 
