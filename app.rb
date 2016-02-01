@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'json'
+
+=begin
+
 db = URI.parse('postgres://oaafdlhwmkznte:mP2aHxLDrp7Xz_5Hy7KQo_hpBC@ec2-54-225-165-132.compute-1.amazonaws.com:5432/d58tgju84l2ipv')
 ActiveRecord::Base.establish_connection(
 	:adapter => 'postgresql',
@@ -26,6 +29,8 @@ end
 class Contact < ActiveRecord::Base
 	self.table_name = "contacts"
 end
+
+=end
 
 get "/" do
 	"hello world"
