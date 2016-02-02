@@ -73,7 +73,7 @@ put "/events/:id" do
 			e.update(name: "#{val}")
 	status 202
 =end
-	type(params)
+	type(params).to_s
 end
 
 delete "/events/:id" do
