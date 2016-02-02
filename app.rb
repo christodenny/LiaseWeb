@@ -68,11 +68,11 @@ put "/events/:id" do
 	e.longitude = params.has_key?(:longitude) ? params[:longitude] : e.longitude
 	e.description = params.has_key?(:description) ? params[:description] : e.description
 	e.save
-=end
 	params.each do |key, val|
 		if e.has_attribute?('#{key}')
 			e.update('#{key}': '#{val}')
 	status 202
+=end
 end
 
 delete "/events/:id" do
