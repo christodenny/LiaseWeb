@@ -59,16 +59,6 @@ end
 put "/events/:id" do
 	e = Event.find(params[:id])
 	return status 404 if e.nil?
-=begin
-	e.start_time = params.has_key?(:start_time) ? params[:start_time] : e.start_time
-	e.end_time = params.has_key?(:end_time) ? params[:end_time] : e.end_time
-	e.place = params.has_key?(:place) ? params[:place] : e.place
-	e.name = params.has_key?(:name) ? params[:name] : e.name
-	e.latitude = params.has_key?(:latitude) ? params[:latitude] : e.latitude
-	e.longitude = params.has_key?(:longitude) ? params[:longitude] : e.longitude
-	e.description = params.has_key?(:description) ? params[:description] : e.description
-	e.save
-=end
 	params.each do |key, val|
 		if e.has_attribute?(key)
 			e.update(key=>"#{val}")
@@ -133,8 +123,12 @@ end
 put "/teams/:id" do
 	team = Team.find(params[:id])
 	return status 404 if team.nil?
-	team.name = params[:name]
-	team.save
+	params.each do |key, val|
+		if team.has_attribute?(key)
+			team.update(key=>"#{val}")
+		end
+	end
+
 	status 202
 end
 
@@ -170,10 +164,12 @@ end
 put "/people/:id" do
 	person = Person.find(params[:id])
 	return status 404 if person.nil?
-	person.name = params[:name]
-	person.team_id = params[:team_id]
-	person.token = params[:token]
-	person.save
+	params.each do |key, val|
+		if person.has_attribute?(key)
+			person.update(key=>"#{val}")
+		end
+	end
+
 	status 202
 end
 
@@ -208,11 +204,12 @@ end
 put "/contacts/:id" do
 	contact = Contact.find(params[:id])
 	return status 404 if contact.nil?
-	c.team_id = params[:team_id]
-	c.ppl_id = params[:ppl_id]
-	c.phone_number = params[:phone_number]
-	c.ppl_type = params[:ppl_type]
-	c.save
+	params.each do |key, val|
+		if contact.has_attribute?(key)
+			contact.update(key=>"#{val}")
+		end
+	end
+
 	status 202
 end
 
@@ -222,6 +219,8 @@ delete "/contacts/:id" do
 	contact.destroy
 	status 202
 end
+
+
 
 get "/schedule" do
 	@events = Event.all.order(:start_time)
