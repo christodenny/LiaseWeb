@@ -71,7 +71,7 @@ put "/events/:id" do
 =end
 	ret = "blah"
 	params.each do |key, val|
-		if e.has_attribute?("#{key}")
+		if e.has_attribute?('"#{key}"')
 			ret = "found"#e.update(name: "#{val}")
 	status 202
 	ret
