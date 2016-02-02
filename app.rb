@@ -69,11 +69,10 @@ put "/events/:id" do
 	e.description = params.has_key?(:description) ? params[:description] : e.description
 	e.save
 =end
-	params.each do |key, val|
+	params.keys.each do |key|
 		#if e.has_attribute?(key)
 			#e.update(name: "#{val}")
 		puts key
-		puts val
 	status 202
 end
 
