@@ -69,12 +69,13 @@ put "/events/:id" do
 	e.description = params.has_key?(:description) ? params[:description] : e.description
 	e.save
 =end
-	ret = "blah"
+	puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 	params.each do |key, val|
+		puts "BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB"
 		if e.has_attribute?(key)
-			ret = "found"#e.update(name: "#{val}")
+			puts "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"
+			#e.update(name: "#{val}")
 	status 202
-	ret
 end
 
 delete "/events/:id" do
