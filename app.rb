@@ -69,10 +69,12 @@ put "/events/:id" do
 	e.description = params.has_key?(:description) ? params[:description] : e.description
 	e.save
 =end
+	ret = "blah"
 	params.each do |key, val|
 		if e.has_attribute?("#{key}")
-			return status 404#e.update(name: "#{val}")
+			ret = "found"#e.update(name: "#{val}")
 	status 202
+	ret
 end
 
 delete "/events/:id" do
