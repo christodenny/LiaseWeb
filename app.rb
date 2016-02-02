@@ -38,7 +38,6 @@ end
 
 get "/events/:id" do
 	e = Event.find(params[:id])
-	return status 404 if e.nil?
 	e.to_json
 end
 
@@ -58,7 +57,6 @@ end
 
 put "/events/:id" do
 	e = Event.find(params[:id])
-	return status 404 if e.nil?
 	params.each do |key, val|
 		if e.has_attribute?(key)
 			e.update(key=>"#{val}")
@@ -69,7 +67,6 @@ end
 
 delete "/events/:id" do
 	e = Event.find(params[:id])
-	return status 404 if e.nil?
 	e.destroy
 	status 202
 end
@@ -80,7 +77,6 @@ end
 
 get "/peopleevents/:id" do
 	pple = People_Event.find(params[:id])
-	return status 404 if pple.nil?
 	pple.to_json
 end
 
@@ -92,7 +88,6 @@ end
 
 delete "/peopleevents/:id" do
 	pple = People_Event.find(params[:id])
-	return status 404 if pple.nil?
 	pple.destroy
 	status 202
 end
@@ -103,7 +98,6 @@ end
 
 get "/teams/:id" do
 	team = Team.find(params[:id])
-	return status 404 if team.nil?
 	team.to_json
 end
 
@@ -122,7 +116,6 @@ end
 
 put "/teams/:id" do
 	team = Team.find(params[:id])
-	return status 404 if team.nil?
 	params.each do |key, val|
 		if team.has_attribute?(key)
 			team.update(key=>"#{val}")
@@ -134,7 +127,6 @@ end
 
 delete "/teams/:id" do
 	team = Team.find(params[:id])
-	return status 404 if team.nil?
 	team.destroy
 	status 202
 end
@@ -145,7 +137,6 @@ end
 
 get "/people/:id" do
 	person = Person.find(params[:id])
-	return status 404 if person.nil?
 	person.to_json
 end
 
@@ -163,7 +154,6 @@ end
 
 put "/people/:id" do
 	person = Person.find(params[:id])
-	return status 404 if person.nil?
 	params.each do |key, val|
 		if person.has_attribute?(key)
 			person.update(key=>"#{val}")
@@ -175,7 +165,6 @@ end
 
 delete "/people/:id" do
 	person = Person.find(params[:id])
-	return status 404 if person.nil?
 	person.destroy
 	status 202
 end
@@ -186,7 +175,6 @@ end
 
 get "/contacts/:id" do
 	contact = Contact.find(params[:id])
-	return status 404 if contact.nil?
 	contact.to_json
 end
 
@@ -203,7 +191,6 @@ end
 
 put "/contacts/:id" do
 	contact = Contact.find(params[:id])
-	return status 404 if contact.nil?
 	params.each do |key, val|
 		if contact.has_attribute?(key)
 			contact.update(key=>"#{val}")
@@ -215,7 +202,6 @@ end
 
 delete "/contacts/:id" do
 	contact = Contact.find(params[:id])
-	return status 404 if contact.nil?
 	contact.destroy
 	status 202
 end
