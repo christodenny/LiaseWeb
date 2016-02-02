@@ -71,7 +71,7 @@ put "/events/:id" do
 =end
 	params.each do |key, val|
 		if e.has_attribute?(key)
-			e.update(key, "#{val}")
+			e.update(key=>"#{val}")
 		end
 	end
 	status 202
