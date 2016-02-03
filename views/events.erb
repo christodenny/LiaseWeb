@@ -170,15 +170,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </form>
             </div>
             <br>
-			<!--
             <div class = "container">
                 <div class="panel panel-default col-md-4">
                     <% @events.each do |event| %>
-                      <div class="panel-body"><%= event.name %></div>
+						<a href="/event/<%=event[:id]%>">
+							<div class="panel-body"><%= event.name %></div>
+						</a>
                     <% end %>
                 </div>
             </div>
-			-->
         </section>
       </div><!-- /.content-wrapper -->
 
