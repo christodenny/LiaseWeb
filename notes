@@ -1,8 +1,11 @@
+-view all events
+	-click on an event to see just that one in detail
+-individual event page
+	-be able to update different fields for the event
 
-
-
-
-
+-how does api accomodate users deleting or adding events to their schedules
+	-add get /events/:id/people for all ppl in event
+	-add get /people/:id/events for all events a person is in
 
 
 

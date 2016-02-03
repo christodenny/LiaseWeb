@@ -232,4 +232,7 @@ post "/addevent" do
 	new_event.save
 	"Name was '#{params[:name]}'"
 end
+get "/event/:id" do
+	params[:id].to_s
+end
 
