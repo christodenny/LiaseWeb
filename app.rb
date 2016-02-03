@@ -52,7 +52,7 @@ post "/events" do
 	e.description = params[:description]
 	e.save
 	status 201
-	e.to_json
+	e[:id].to_s
 end
 
 put "/events/:id" do
@@ -81,9 +81,12 @@ get "/peopleevents/:id" do
 end
 
 post "/peopleevents" do
-	People_Event.create(ppl_id: params[:ppl_id], event_id: params[:event_id])
+	pple = People_Event.new
+	pple.ppl_id = params[:ppl_id]
+	pple.event_id = params[:event_id]
+	pple.save
 	status 201
-	People_Event.last[:id].to_json
+	pple[:id].to_s
 end
 
 delete "/peopleevents/:id" do
@@ -102,8 +105,11 @@ get "/teams/:id" do
 end
 
 post "/teams" do
-	Team.create(name: params[:name])
+	team = Team.new
+	team.name = params[:name]
+	team.save
 	status 201
+	team[:id].to_s
 end
 
 get "/teams/:id/people" do
@@ -141,12 +147,10 @@ get "/people/:id" do
 end
 
 post "/people" do
-	#Person.create(name: params[:name], team_id: params[:team_id])
 	p = Person.new
 	p.name = params[:name]
 	p.team_id = params[:team_id]
 	p.save
-	#Person.last[:id].to_s
 	p[:id].to_s
 end
 
