@@ -141,8 +141,13 @@ get "/people/:id" do
 end
 
 post "/people" do
-	Person.create(name: params[:name], team_id: params[:team_id])
-	Person.last[:id].to_s
+	#Person.create(name: params[:name], team_id: params[:team_id])
+	p = Person.new
+	p.name = params[:name]
+	p.team_id = params[:team_id]
+	p.save
+	#Person.last[:id].to_s
+	p[:id].to_s
 end
 
 get "/people/:id/events" do
