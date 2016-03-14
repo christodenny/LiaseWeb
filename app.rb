@@ -31,17 +31,17 @@ end
 get "/" do
 	"hello world"
 end
-get "/events" do
+get "/api/events" do
 	Event.all.to_json
 end
-get "/events/:id" do
+get "/api/events/:id" do
 	e = Event.find(params[:id])
 	e.to_json
 end
-get "/events/:id/people" do
+get "/api/events/:id/people" do
 	"TODO"
 end
-post "/events" do
+post "/api/events" do
 	e = Event.new
 	e.start_time = params[:start_time]
 	e.end_time = params[:end_time]
@@ -54,7 +54,7 @@ post "/events" do
 	status 201
 	e[:id].to_s
 end
-put "/events/:id" do
+put "/api/events/:id" do
 	e = Event.find(params[:id])
 	params.each do |key, val|
 		if e.has_attribute?(key)
@@ -63,19 +63,19 @@ put "/events/:id" do
 	end
 	status 202
 end
-delete "/events/:id" do
+delete "/api/events/:id" do
 	e = Event.find(params[:id])
 	e.destroy
 	status 202
 end
-get "/peopleevents" do
+get "/api/peopleevents" do
 	People_Event.all.to_json
 end
-get "/peopleevents/:id" do
+get "/api/peopleevents/:id" do
 	pple = People_Event.find(params[:id])
 	pple.to_json
 end
-post "/peopleevents" do
+post "/api/peopleevents" do
 	pple = People_Event.new
 	pple.ppl_id = params[:ppl_id]
 	pple.event_id = params[:event_id]
@@ -83,32 +83,32 @@ post "/peopleevents" do
 	status 201
 	pple[:id].to_s
 end
-delete "/peopleevents/:id" do
+delete "/api/peopleevents/:id" do
 	pple = People_Event.find(params[:id])
 	pple.destroy
 	status 202
 end
-get "/teams" do
+get "/api/teams" do
 	Team.all.to_json
 end
-get "/teams/:id" do
+get "/api/teams/:id" do
 	team = Team.find(params[:id])
 	team.to_json
 end
-post "/teams" do
+post "/api/teams" do
 	team = Team.new
 	team.name = params[:name]
 	team.save
 	status 201
 	team[:id].to_s
 end
-get "/teams/:id/people" do
+get "/api/teams/:id/people" do
 	Person.where(team_id: params[:id]).to_json
 end
-get "/teams/:id/contacts" do
+get "/api/teams/:id/contacts" do
 	Contact.where(team_id: params[:id]).to_json
 end
-put "/teams/:id" do
+put "/api/teams/:id" do
 	team = Team.find(params[:id])
 	params.each do |key, val|
 		if team.has_attribute?(key)
@@ -118,35 +118,35 @@ put "/teams/:id" do
 
 	status 202
 end
-delete "/teams/:id" do
+delete "/api/teams/:id" do
 	team = Team.find(params[:id])
 	team.destroy
 	status 202
 end
-get "/people" do
+get "/api/people" do
 	Person.all.to_json
 end
-get "/people/:id" do
+get "/api/people/:id" do
 	person = Person.find(params[:id])
 	person.to_json
 end
-get "/people/:id/events" do
+get "/api/people/:id/events" do
 	"TODO"
 end
-post "/people" do
+post "/api/people" do
 	p = Person.new
 	p.name = params[:name]
 	p.team_id = params[:team_id]
 	p.save
 	p[:id].to_s
 end
-get "/people/:id/events" do
+get "/api/people/:id/events" do
 	array = []
 	pplevents = People_Event.where(ppl_id: params[:id])
 	pplevents.each { |pplevent| array += Event.where(id: pplevent.event_id)}
 	array.to_json
 end
-put "/people/:id" do
+put "/api/people/:id" do
 	person = Person.find(params[:id])
 	params.each do |key, val|
 		if person.has_attribute?(key)
@@ -155,19 +155,19 @@ put "/people/:id" do
 	end
 	status 202
 end
-delete "/people/:id" do
+delete "/api/people/:id" do
 	person = Person.find(params[:id])
 	person.destroy
 	status 202
 end
-get "/contacts" do
+get "/api/contacts" do
 	Contact.all.to_json
 end
-get "/contacts/:id" do
+get "/api/contacts/:id" do
 	contact = Contact.find(params[:id])
 	contact.to_json
 end
-post "/contacts" do
+post "/api/contacts" do
 	c = Contact.new
 	c.team_id = params[:team_id]
 	c.ppl_id = params[:ppl_id]
@@ -177,7 +177,7 @@ post "/contacts" do
 	status 201
 	c[:id].to_s
 end
-put "/contacts/:id" do
+put "/api/contacts/:id" do
 	contact = Contact.find(params[:id])
 	params.each do |key, val|
 		if contact.has_attribute?(key)
@@ -186,7 +186,7 @@ put "/contacts/:id" do
 	end
 	status 202
 end
-delete "/contacts/:id" do
+delete "/api/contacts/:id" do
 	contact = Contact.find(params[:id])
 	contact.destroy
 	status 202
