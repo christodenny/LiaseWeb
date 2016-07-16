@@ -1,5 +1,5 @@
 get "/" do
-	"hello world!"
+	"hello world"
 end
 get "/api/events" do
 	Event.all.to_json
