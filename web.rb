@@ -21,12 +21,12 @@ get "/message" do
 	erb :message
 end
 
-get "/addevent" do
+get "/events" do
 	@events = Event.all.order(:start_time)
 	erb :events
 end
 
-post "/addevent" do
+post "/events" do
 	new_event = Event.new
 	new_event.name = params[:name]
 	new_event.start_time = params[:start_time]
@@ -36,7 +36,9 @@ post "/addevent" do
 	new_event.longitude = params[:longitude]
 	new_event.description = params[:description]
 	new_event.save
-	"Name was '#{params[:name]}'"
+	#{}"Name was '#{params[:name]}'"
+	@events = Event.all.order(:start_time)
+	erb :events
 end
 get "/event/:id" do
 	params[:id].to_s
