@@ -7,26 +7,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>SOAA | Schedule</title>
+    <title>SOAA | Add Event</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="icon" href="favicon.png" type="image/x-icon">
     <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="/dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
     -->
-    <link rel="stylesheet" href="/dist/css/skins/skin-black.min.css">
+    <link rel="stylesheet" href="dist/css/skins/skin-black.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,11 +58,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <body class="skin-black sidebar-mini">
     <div class="wrapper">
+
         <!-- Main Header -->
         <header class="main-header">
+
             <!-- Logo -->
-            <div id="logo-div" class="logo">
+            <div id="logo-div" class="logo" href="schedule.html">
+<!--                <img src="logo.png" id="logo-img" style="margin-left: -15px; ">-->
                 <a href="schedule.html">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <!--
+              <span class="logo-mini"><b>A</b>LT</span>
+               logo for regular state and mobile devices 
+              <span class="logo-lg"><b>Admin</b>LTE</span>
+-->
                 </a>
             </div>
 
@@ -72,23 +81,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a id="sidebar-btn" href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" >
                     <span class="sr-only">Toggle navigation</span>
                 </a>
+                
             </nav>
         </header>
         <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
+
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
+
+
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu">
                     <li class="header">Menu</li>
                     <!-- Optionally, you can add icons to the links -->
-                    <li class="active"><a href="schedule"><i class="fa fa-calendar"></i> <span>Schedule</span></a>
+                    <li><a href="schedule"><i class="fa fa-calendar"></i> <span>Schedule</span></a>
                     </li>
                     <li><a href="teamscontacts"><i class="fa fa-group"></i> <span>Teams</span></a>
                     </li>
                     <li><a href="message"><i class="fa fa-envelope-o"></i> <span>Quick Message</span></a>
                     </li>
-                    <li><a href="addevent"><i class="fa fa-plus-square"></i> <span>Add Events</span></a>
+                    <li class="active"><a href="addevent"><i class="fa fa-plus-square"></i> <span>Add Events</span></a>
                     </li>
                 </ul>
                 <!-- /.sidebar-menu -->
@@ -96,79 +109,81 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.sidebar -->
         </aside>
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="min-height: 559px;">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-            Schedule of Events
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Add New Event
             <small>Optional description</small>
           </h1>
-                
-            </section>
-
-            
-            <!-- Main content -->
-            <section class="content">
-                <div class="container panel-group col-md-9">
-
-                    <% @events.each do |event| %>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <h4 class="panel-title"><%=event.start_time%> - <%=event.end_time%></h4>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#<%=event.id%>"><%=event.name%></a>
-                                    </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="<%=event.id%>" class="panel-collapse collapse">
-                                <div class="row">
-                                    <div class="col-md-offset-3">
-                                        <div class="panel-body"><b><%=event.place%></b>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-3">
-                                        <div class="panel-body">Clements High School</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-3">
-                                        <div class="panel-body">Seven Lakes</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-offset-3">
-                                        <div class="panel-body">LASA</div>
-                                    </div>
-                                </div>
-                            </div>
+          
+        </section>
+          
+                    
+        <!-- Main content -->
+        <section class = "content">
+            <div class="container">
+                <form role = "form" method="post" action="/addevent">
+                    <div class = "row">
+                        <div class="col-md-3">
+                            <label for="name">New Event Name:</label>  
+                            <input type="text" class="form-control" id="name" name="name">
                         </div>
-                    <% end %>
-                </div>
-            </section>
-        </div>
-        <!-- /.content-wrapper -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-
+                        <div class="col-md-3">
+                            <label for="start_time">Start Time:</label>  
+                            <input type="text" class="form-control" id="start_time" name="start_time">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="end_time">End Time:</label>  
+                            <input type="text" class="form-control" id="end_time" name="end_time">
+                        </div>
+                    </div>
+                    <br>
+                    <div class = "row">
+                        <div class="col-md-3">
+                            <label for="place">Location:</label>  
+                            <input type="text" class="form-control" id="place" name="place">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="latitude">Latitude:</label>  
+                            <input type="text" class="form-control" id="latitude" name="latitude">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="longitude">Longitude:</label>  
+                            <input type="text" class="form-control" id="longitude" name="longitude">
+                        </div>
+                    </div>
+                    <br>
+                    <div class = "row">
+                        <div class="col-md-9">
+                            <label for="description">Description:</label>  
+                            <input type="text" class="form-control" id="description" name="description">
+                        </div>
+                    </div>
+                    <br>
+                    <div class = "row">
+                        <div class = "col-md-1">
+                            <button type="submit" class="btn btn-default">Enter</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <!-- Default to the left -->
-            <strong>Copyright © 2015 <a href="http://atxscioly.com/">Science Olympiad Alumni Association</a>.</strong> All rights reserved.
-        </footer>
+        </section>
+      </div><!-- /.content-wrapper -->
 
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="http://atxscioly.com/">Science Olympiad Alumni Association</a>.</strong> All rights reserved.
+      </footer>
 
-    </div>
-    <!-- ./wrapper -->
+      
+    </div><!-- ./wrapper -->
 
     <!-- REQUIRED JS SCRIPTS -->
 
