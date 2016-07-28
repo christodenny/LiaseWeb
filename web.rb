@@ -22,24 +22,14 @@ get "/message" do
 end
 
 get "/addevent" do
-	@events = Event.all.order(:start_time)
 	erb :addevent
 end
 
-post "/addevent" do
-	new_event = Event.new
-	new_event.name = params[:name]
-	new_event.start_time = params[:start_time]
-	new_event.end_time = params[:end_time]
-	new_event.place = params[:place]
-	new_event.latitude = params[:latitude]
-	new_event.longitude = params[:longitude]
-	new_event.description = params[:description]
-	new_event.save
-	#{}"Name was '#{params[:name]}'"
-	@events = Event.all.order(:start_time)
-	erb :addevent
+get "/updateevent/:id" do
+	@event = Event.find(params[:id])
+	erb :updateevent
 end
+
 get "/events" do
 	@events = Event.all.order(:start_time)
 	erb :events
