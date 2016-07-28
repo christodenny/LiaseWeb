@@ -5,8 +5,13 @@ get "/api/events" do
 	Event.all.to_json
 end
 get "/api/events/:id" do
-	e = Event.find(params[:id])
-	e.to_json
+	e = Event.find(params[:id]) rescue nil
+	if e.nil?
+		status 404
+		return
+	else
+		e.to_json
+	end
 end
 get "/api/events/:id/people" do
 	"TODO"
@@ -22,28 +27,43 @@ post "/api/events" do
 	e.description = params[:description]
 	e.save
 	status 201
-	e[:id].to_s
+	erb :addevent
 end
 put "/api/events/:id" do
-	e = Event.find(params[:id])
-	params.each do |key, val|
-		if e.has_attribute?(key)
-			e.update(key=>"#{val}")
+	e = Event.find(params[:id]) rescue nil
+	if e.nil?
+		status 404
+		return
+	else
+		params.each do |key, val|
+			if e.has_attribute?(key)
+				e.update(key=>"#{val}")
+			end
 		end
+		status 202
 	end
-	status 202
 end
 delete "/api/events/:id" do
-	e = Event.find(params[:id])
-	e.destroy
-	status 202
+	e = Event.find(params[:id]) rescue nil
+	if e.nil?
+		status 404
+		return
+	else
+		e.destroy
+		status 202
+	end
 end
 get "/api/peopleevents" do
 	People_Event.all.to_json
 end
 get "/api/peopleevents/:id" do
-	pple = People_Event.find(params[:id])
-	pple.to_json
+	pple = People_Event.find(params[:id]) rescue nil
+	if pple.nil?
+		status 404
+		return
+	else
+		pple.to_json
+	end
 end
 post "/api/peopleevents" do
 	pple = People_Event.new
@@ -54,16 +74,26 @@ post "/api/peopleevents" do
 	pple[:id].to_s
 end
 delete "/api/peopleevents/:id" do
-	pple = People_Event.find(params[:id])
-	pple.destroy
-	status 202
+	pple = People_Event.find(params[:id]) rescue nil
+	if pple.nil?
+		status 404
+		return
+	else
+		pple.destroy
+		status 202
+	end
 end
 get "/api/teams" do
 	Team.all.to_json
 end
 get "/api/teams/:id" do
-	team = Team.find(params[:id])
-	team.to_json
+	team = Team.find(params[:id]) rescue nil
+	if team.nil?
+		status 404
+		return
+	else
+		team.to_json
+	end
 end
 post "/api/teams" do
 	team = Team.new
@@ -79,26 +109,40 @@ get "/api/teams/:id/contacts" do
 	Contact.where(team_id: params[:id]).to_json
 end
 put "/api/teams/:id" do
-	team = Team.find(params[:id])
-	params.each do |key, val|
-		if team.has_attribute?(key)
-			team.update(key=>"#{val}")
+	team = Team.find(params[:id]) rescue nil
+	if team.nil?
+		status 404
+		return
+	else
+		params.each do |key, val|
+			if team.has_attribute?(key)
+				team.update(key=>"#{val}")
+			end
 		end
+		status 202
 	end
-
-	status 202
 end
 delete "/api/teams/:id" do
-	team = Team.find(params[:id])
-	team.destroy
-	status 202
+	team = Team.find(params[:id]) rescue nil
+	if team.nil?
+		status 404
+		return
+	else
+		team.destroy
+		status 202
+	end
 end
 get "/api/people" do
 	Person.all.to_json
 end
 get "/api/people/:id" do
-	person = Person.find(params[:id])
-	person.to_json
+	person = Person.find(params[:id]) rescue nil
+	if person.nil?
+		status 404
+		return
+	else
+		person.to_json
+	end
 end
 get "/api/people/:id/events" do
 	"TODO"
@@ -117,25 +161,40 @@ get "/api/people/:id/events" do
 	array.to_json
 end
 put "/api/people/:id" do
-	person = Person.find(params[:id])
-	params.each do |key, val|
-		if person.has_attribute?(key)
-			person.update(key=>"#{val}")
+	person = Person.find(params[:id]) rescue nil
+	if person.nil?
+		status 404
+		return
+	else
+		params.each do |key, val|
+			if person.has_attribute?(key)
+				person.update(key=>"#{val}")
+			end
 		end
+		status 202
 	end
-	status 202
 end
 delete "/api/people/:id" do
-	person = Person.find(params[:id])
-	person.destroy
-	status 202
+	person = Person.find(params[:id]) rescue nil
+	if person.nil?
+		status 404
+		return
+	else
+		person.destroy
+		status 202
+	end
 end
 get "/api/contacts" do
 	Contact.all.to_json
 end
 get "/api/contacts/:id" do
-	contact = Contact.find(params[:id])
-	contact.to_json
+	contact = Contact.find(params[:id]) rescue nil
+	if contact.nil?
+		status 404
+		return
+	else
+		contact.to_json
+	end
 end
 post "/api/contacts" do
 	c = Contact.new
@@ -148,17 +207,27 @@ post "/api/contacts" do
 	c[:id].to_s
 end
 put "/api/contacts/:id" do
-	contact = Contact.find(params[:id])
-	params.each do |key, val|
-		if contact.has_attribute?(key)
-			contact.update(key=>"#{val}")
+	contact = Contact.find(params[:id]) rescue nil
+	if contact.nil?
+		status 404
+		return
+	else
+		params.each do |key, val|
+			if contact.has_attribute?(key)
+				contact.update(key=>"#{val}")
+			end
 		end
+		status 202
 	end
-	status 202
 end
 delete "/api/contacts/:id" do
-	contact = Contact.find(params[:id])
-	contact.destroy
-	status 202
+	contact = Contact.find(params[:id]) rescue nil
+	if contact.nil?
+		status 404
+		return
+	else
+		contact.destroy
+		status 202
+	end
 end
 
